@@ -12,7 +12,7 @@ DESCRIPTION = '''A bot with just a bunch of random stuff.
 PlasmaLink's baby.'''
 
 # this specifies what extensions to load when the bot starts up
-startup_extensions = ["Mathstuff"]
+startup_extensions = ["Mathstuff", "twitter"]
 
 bot = Bot(command_prefix=BOT_PREFIX, description=DESCRIPTION)
 
