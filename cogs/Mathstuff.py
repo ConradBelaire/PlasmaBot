@@ -13,17 +13,17 @@ class Mathstuff():
 		await self.bot.say(str(number) + "^2 = " + str(squared_value))
 		
 	
-	@bot.command(name="roll",
+	@commands.command(name="roll",
 				description="Roll a dice with specified sides",
 				brief="Roll a die!",
 				aliases=['r', 'dice'])
-	async def roll(number):
+	async def roll(self, number):
 		try:
 			d = int(number)
 			r = random.randrange(1, d+1)
-			await bot.say("Rolling a d" + number + "... It returned a " + str(r) + "!")
+			await self.bot.say("Rolling a d" + number + "... It returned a " + str(r) + "!")
 		except ValueError:
-			await bot.say("That's not a valid number!")
+			await self.bot.say("That's not a valid number!")
 		
 
 
