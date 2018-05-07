@@ -72,9 +72,9 @@ async def list_servers():
 async def on_ready():
 	await bot.change_presence(game=Game(name="``help"))
 	print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
-    print('------')
+	print(bot.user.name)
+	print(bot.user.id)
+	print('------')
 	
 	for extension in startup_extensions:
 		try:
