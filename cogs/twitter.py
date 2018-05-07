@@ -14,9 +14,9 @@ class twitter():
 		
 
 	@commands.command(name="dril",
-					description="Posts one of Dril's last 3000 tweets at random. May take a bit.",
+					description="Posts a random dril tweet. Can make multiple posts, and adjust how far back to look (further means longer wait time)",
 					brief="Random @dril tweet, give it a few seconds")
-	async def dril(self):
+	async def dril(self, num=1, distance=500):
 		# await self.bot.say("Give me a moment!")
 		api = TwitterAPI("JxnEf70mF6iyRi669yQ2EIgwW", "rBOdLgHYU5xIEG3qvsOrKzTSHq3rEuVOl6hLDESq9AZVuyIBHP", auth_type='oAuth2')
 	
@@ -29,13 +29,15 @@ class twitter():
 				count = count + 1
 				# await self.bot.say(str(count) + ". " + item['text'])
 				tweets.append(item['text'])
-				if (count > 3000):
+				if (count > distance):
 					break
 			elif 'message' in item:
 				await self.bot.say(item['message'])
 				break
-		msg = random.choice(tweets)
-		await self.bot.say(msg)
+		
+		for i in range(0, num):
+			msg = random.choice(tweets)
+			await self.bot.say(msg)
 	
 
 
