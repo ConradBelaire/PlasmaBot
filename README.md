@@ -2,7 +2,7 @@
 Lovely little discord bot, mostly made for the purpose of learning.
 Not all of the code here is mine, and a lot of it that is is modified from other code.
 
-The prefix is ``, type ``help to see its commands.
+The prefix is \`\`, type \`\`help to see its commands.
 
 Currently, the highlight is being able to print a random @dril tweet using ``dril.
 

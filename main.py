@@ -52,8 +52,8 @@ async def ISS(name="ISS",
 
 	
 @bot.command(name="astros",
-				description="Displays how many people are currently in space.",
-				brief="How many are in space?")
+			description="Displays how many people are currently in space.",
+			brief="How many are in space?")
 async def astros():
 	response = requests.get("http://api.open-notify.org/astros.json")
 	data = response.json()
