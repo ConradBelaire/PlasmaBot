@@ -31,22 +31,12 @@ async def eight_ball(context):
     ]
     await bot.say(random.choice(possible_responses) + ", " + context.message.author.mention)
 
-	
-	
-@bot.command(name="roll",
-				description="Roll a dice with specified sides",
-				brief="Roll a die!",
-				aliases=['r', 'dice'])
-async def roll(number):
-	try:
-		d = int(number)
-		r = random.randrange(1, d+1)
-		await bot.say("Rolling a d" + number + "... It returned a " + str(r) + "!")
-	except ValueError:
-		await bot.say("That's not a valid number!")
+		
 
+'''
 @bot.command()
-async def ISS():
+async def ISS(name="ISS",
+				description:"Prints information to the console"):
 	# Set up the parameters we want to pass to the API.
 	# This is the latitude and longitude of New York City.
 	parameters = {"lat": 40.71, "lon": -74}
@@ -58,6 +48,8 @@ async def ISS():
 	data = response.json()
 	print(type(data))
 	print(data)
+'''
+
 	
 @bot.command(name="astros",
 				description="Displays how many people are currently in space.",
@@ -78,12 +70,15 @@ async def list_servers():
 	
 @bot.event
 async def on_ready():
-	await bot.change_presence(game=Game(name="big mood"))
-	print("Logged in as " + bot.user.name)
+	await bot.change_presence(game=Game(name="``help"))
+	print('Logged in as')
+    print(bot.user.name)
+    print(bot.user.id)
+    print('------')
 	
 	for extension in startup_extensions:
 		try:
-			bot.load_extension(extension)
+			bot.load_extension('cogs.' + extension)
 		except Exception as e:
 			exc = '{}: {}'.format(type(e).__name__, e)
 			print('Failed to load extension {}\n{}'.format(extension, exc))

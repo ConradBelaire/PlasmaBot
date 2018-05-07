@@ -13,7 +13,9 @@ class twitter():
 		self.bot = bot
 		
 
-	@commands.command()
+	@commands.command(name="dril",
+					description="Posts one of Dril's last 3000 tweets at random. May take a bit.",
+					brief="Random @dril tweet, give it a few seconds")
 	async def dril(self):
 		# await self.bot.say("Give me a moment!")
 		api = TwitterAPI("JxnEf70mF6iyRi669yQ2EIgwW", "rBOdLgHYU5xIEG3qvsOrKzTSHq3rEuVOl6hLDESq9AZVuyIBHP", auth_type='oAuth2')
