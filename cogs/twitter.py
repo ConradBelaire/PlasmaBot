@@ -36,8 +36,11 @@ class twitter():
 				break
 		
 		for i in range(0, num):
+			if not tweets:
+				break
 			msg = random.choice(tweets)
 			await self.bot.say(msg)
+			tweets.remove(msg)
 	
 
 
