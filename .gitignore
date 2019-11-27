@@ -1,4 +1,6 @@
 __pycache__
 *.pyc
 cogs/dril.txt
+cogs/secrets.py
 *.pyc
+secrets.py

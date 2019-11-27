@@ -2,12 +2,10 @@ import discord
 from discord.ext import commands
 from TwitterAPI import TwitterAPI, TwitterPager
 import random
+from secrets import k1, k2
 
-class twitter():
+class Twitter(commands.Cog):
 
-	# api = TwitterAPI("JxnEf70mF6iyRi669yQ2EIgwW", "rBOdLgHYU5xIEG3qvsOrKzTSHq3rEuVOl6hLDESq9AZVuyIBHP", "34954969-LBRBGz3Dim9ke9QtkHjffTsDBPKJgfBXAdXBwZvdE", "rmkoKemZc4WG7jobEEFYdNnpSa6fJ49GMWHUdgKzFFkRp")
-	
-	
 	
 	def __init__(self, bot):
 		self.bot = bot
@@ -16,9 +14,9 @@ class twitter():
 	@commands.command(name="dril",
 					description="Posts a random dril tweet. Can make multiple posts, and adjust how far back to look (further means longer wait time)",
 					brief="Random @dril tweet, give it a few seconds")
-	async def dril(self, num=1, distance=500):
+	async def dril(self, ctx, num=1, distance=500):
 		# await self.bot.say("Give me a moment!")
-		api = TwitterAPI("JxnEf70mF6iyRi669yQ2EIgwW", "rBOdLgHYU5xIEG3qvsOrKzTSHq3rEuVOl6hLDESq9AZVuyIBHP", auth_type='oAuth2')
+		api = TwitterAPI(k1, k2, auth_type='oAuth2')
 	
 		SCREEN_NAME = 'dril'
 		pager = TwitterPager(api,'statuses/user_timeline', {'screen_name':SCREEN_NAME, 'count':200})
@@ -32,17 +30,17 @@ class twitter():
 				if (count > distance):
 					break
 			elif 'message' in item:
-				await self.bot.say(item['message'])
+				await ctx.send(item['message'])
 				break
 		
 		for i in range(0, num):
 			if not tweets:
 				break
 			msg = random.choice(tweets)
-			await self.bot.say(msg)
+			await ctx.send(msg)
 			tweets.remove(msg)
 	
 
 
 def setup(bot):
-    bot.add_cog(twitter(bot))
+    bot.add_cog(Twitter(bot))
